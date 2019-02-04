@@ -10,14 +10,21 @@ class App extends Component {
     this.state = {
       user: null
     };
+    this.login = this.login.bind(this);
+  }
+
+  login(user) {
+    this.setState({
+      user: user
+    })
   }
 
   render() {
     return (
       <div className="App">
-        <Header />
-        <Content />
-        <Footer />
+        <Header user={this.state.user} />
+        <Content user={this.state.user} login={this.login} />
+        <Footer user={this.state.user} />
       </div>
     );
   }
